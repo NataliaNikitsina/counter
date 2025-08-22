@@ -10,7 +10,7 @@ type SettingPartPropsType = {
     startValue: number;
     setStartValue: (startValue: number) => void
     onclick: () => void
-    setScreenInterface: (counter: ScreenInterfaceType) => void
+    setScreenInterface: (screenInterface: ScreenInterfaceType) => void
 }
 
 export const SettingPart = (props:SettingPartPropsType) => {

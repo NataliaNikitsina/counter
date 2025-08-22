@@ -5,14 +5,14 @@ import {ScreenInterfaceType} from "../../App.tsx";
 type CounterPartPropsType = {
     maxValue: number
     startValue: number
-    counter: ScreenInterfaceType
+    screenInterface: ScreenInterfaceType
     setScreenInterface: (screenInterface: ScreenInterfaceType) => void
 }
 
-export const CounterPart = ({startValue, maxValue, counter, setScreenInterface}:CounterPartPropsType) => {
+export const CounterPart = ({startValue, maxValue, screenInterface, setScreenInterface}:CounterPartPropsType) => {
 
     const incOnClickHandler = () => {
-        if (typeof(counter)==="number" && counter < maxValue) setScreenInterface(counter + 1)
+        if (typeof(screenInterface)==="number" && screenInterface < maxValue) setScreenInterface(screenInterface + 1)
     };
 
     const resetOnClickHandler = () => {
@@ -21,10 +21,10 @@ export const CounterPart = ({startValue, maxValue, counter, setScreenInterface}:
 
     return (
         <div className={'counter-container'}>
-            <Screen value={counter} isMaxValue={counter === maxValue}/>
+            <Screen value={screenInterface} isMaxValue={screenInterface === maxValue}/>
             <div className={'button-wrapper'}>
-                <Button title={'inc'} onClick={incOnClickHandler} disabled={counter === maxValue}/>
-                <Button title={'reset'} onClick={resetOnClickHandler} disabled={counter === startValue}/>
+                <Button title={'inc'} onClick={incOnClickHandler} disabled={screenInterface === maxValue}/>
+                <Button title={'reset'} onClick={resetOnClickHandler} disabled={screenInterface === startValue}/>
             </div>
         </div>
     )

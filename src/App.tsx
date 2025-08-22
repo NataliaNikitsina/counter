@@ -56,7 +56,7 @@ export function App() {
             <CounterPart
                 maxValue={maxValue}
                 startValue={startValue}
-                counter={screenInterface}
+                screenInterface={screenInterface}
                 setScreenInterface={setScreenInterface}
             />
         </>
