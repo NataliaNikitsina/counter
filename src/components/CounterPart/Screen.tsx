@@ -1,15 +1,15 @@
-import {ScreenInterfaceType} from "../../App.tsx";
+import {ErrorType} from "../../App.tsx";
 
 type ScreenProps = {
-    value: ScreenInterfaceType;
     isMaxValue: boolean;
+    value: number;
+    error: ErrorType;
 }
 
 export const Screen = (props: ScreenProps) => {
 
     return (
-        <div className={(props.isMaxValue || props.value === 'Incorrect value!') ? 'max-value screen' : 'screen'}>
-            {props.value}
-        </div>
+            <div className={(props.isMaxValue || props.error === 'Incorrect value!') ? 'max-value screen' : 'screen'}>
+            {props.error || props.value}</div>
     )
 };

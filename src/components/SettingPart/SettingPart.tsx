@@ -1,7 +1,7 @@
 import {Input} from "./Input.tsx";
 import {Button} from "../Button.tsx";
 import {useState} from "react";
-import {ScreenInterfaceType} from "../../App.tsx";
+import {ErrorType} from "../../App.tsx";
 
 
 type SettingPartPropsType = {
@@ -10,7 +10,9 @@ type SettingPartPropsType = {
     startValue: number;
     setStartValue: (startValue: number) => void
     onclick: () => void
-    setScreenInterface: (screenInterface: ScreenInterfaceType) => void
+    error: ErrorType
+    setError: (error: ErrorType) => void
+    // setScreenInterface: (screenInterface: ScreenInterfaceType) => void
 }
 
 export const SettingPart = (props:SettingPartPropsType) => {
@@ -30,18 +32,22 @@ export const SettingPart = (props:SettingPartPropsType) => {
                        onChange={props.setMaxValue}
                        value={props.maxValue}
                        setDisabled={setDisabled}
-                       setScreenInterface={props.setScreenInterface}
+                       // setScreenInterface={props.setScreenInterface}
                        maxValue={props.maxValue}
                        startValue={props.startValue}
+                       error={props.error}
+                       setError={props.setError}
                 />
 
                 <Input labelTitle={'start value'}
                        onChange={props.setStartValue}
                        value={props.startValue}
                        setDisabled={setDisabled}
-                       setScreenInterface={props.setScreenInterface}
+                       // setScreenInterface={props.setScreenInterface}
                        maxValue={props.maxValue}
                        startValue={props.startValue}
+                       error={props.error}
+                       setError={props.setError}
                 />
             </div>
                 <Button title={'set'} onClick={onClickHandler} disabled={isDisabled}/>

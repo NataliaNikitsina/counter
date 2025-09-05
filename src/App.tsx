@@ -4,7 +4,9 @@ import {useState} from "react";
 
 // import {useEffect, useState} from "react";
 
-export type ScreenInterfaceType = 'Incorrect value!' | 'Enter values and press Set' | number
+// export type ScreenInterfaceType = 'Incorrect value!' | 'Enter values and press Set' | number
+
+export type ErrorType = 'Incorrect value!' | 'Enter values and press Set' | ''
 
 export function App() {
 
@@ -15,7 +17,12 @@ export function App() {
 
     const [startValue, setStartValue] = useState<number>(storageStartValue);
 
-    const [screenInterface, setScreenInterface] = useState<ScreenInterfaceType>(startValue);
+    // const [screenInterface, setScreenInterface] = useState<ScreenInterfaceType>(startValue);
+
+    const [counter, setCounter] = useState<number>(startValue);
+    const [error, setError] = useState<ErrorType>('');
+
+
 
     // useEffect(() => {
     //     const storageMaxValue = localStorage.getItem('maxValue');
@@ -37,7 +44,9 @@ export function App() {
     const setOnClickHandler = () => {
         setMaxValue(maxValue)
         setStartValue(startValue)
-        setScreenInterface(startValue)
+        // setScreenInterface(startValue)
+        setCounter(startValue)
+        setError('')
         localStorage.setItem('maxValue', JSON.stringify(maxValue));
         localStorage.setItem('startValue', JSON.stringify(startValue))
     }
@@ -50,14 +59,19 @@ export function App() {
                 startValue={startValue}
                 setStartValue={setStartValue}
                 onclick={setOnClickHandler}
-                setScreenInterface={setScreenInterface}
+                error={error}
+                setError={setError}
+                // setScreenInterface={setScreenInterface}
             />
 
             <CounterPart
                 maxValue={maxValue}
                 startValue={startValue}
-                screenInterface={screenInterface}
-                setScreenInterface={setScreenInterface}
+                setCounter={setCounter}
+                counter={counter}
+                error={error}
+                // screenInterface={screenInterface}
+                // setScreenInterface={setScreenInterface}
             />
         </>
 

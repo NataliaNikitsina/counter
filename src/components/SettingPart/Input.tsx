@@ -1,14 +1,16 @@
 import {ChangeEvent} from "react";
-import {ScreenInterfaceType} from "../../App.tsx";
+import {ErrorType} from "../../App.tsx";
 
 type InputPropsType = {
     labelTitle: string
     onChange: (value: number) => void
     value: number
     setDisabled: (isDisabled: boolean) => void
-    setScreenInterface: (screenInterface: ScreenInterfaceType) => void
+    // setScreenInterface: (screenInterface: ScreenInterfaceType) => void
     maxValue: number;
     startValue: number;
+    error: ErrorType
+    setError: (error: ErrorType) => void
 }
 
 export const Input = (props: InputPropsType) => {
@@ -20,11 +22,13 @@ export const Input = (props: InputPropsType) => {
             (+e.currentTarget.value < 0)
         ) {
             props.onChange(+e.currentTarget.value)
-            props.setScreenInterface('Incorrect value!')
+            // props.setScreenInterface('Incorrect value!')
+            props.setError('Incorrect value!')
             props.setDisabled(true)
         } else {
             props.onChange(+e.currentTarget.value)
-            props.setScreenInterface('Enter values and press Set')
+            // props.setScreenInterface('Enter values and press Set')
+            props.setError('Enter values and press Set')
             props.setDisabled(false)
         }
     }
